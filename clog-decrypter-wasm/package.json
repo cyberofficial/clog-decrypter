@@ -1,0 +1,16 @@
+{
+  "name": "clog-decrypter-wasm",
+  "version": "1.0.0",
+  "description": "WebAssembly (AssemblyScript) port of clog-decrypter: repeating-key XOR .clog decrypter. No Rust used.",
+  "type": "module",
+  "main": "src/main.ts",
+  "scripts": {
+    "build": "asc src/main.ts -o web/clog_decrypt.wasm --runtime stub -O3 --noAssert",
+    "test": "node test.mjs",
+    "serve": "python3 -m http.server 8099 --directory web"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "assemblyscript": "^0.28.20"
+  }
+}

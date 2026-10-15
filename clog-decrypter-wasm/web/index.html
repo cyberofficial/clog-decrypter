@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>clog-decrypter-wasm</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body { font-family: system-ui, sans-serif; max-width: 860px; margin: 2rem auto; padding: 0 1rem; color: #222; }
+    h1 { font-size: 1.4rem; }
+    #dropzone { border: 2px dashed #888; border-radius: 10px; padding: 2.5rem 1rem; text-align: center; cursor: pointer; }
+    #dropzone.dragover { border-color: #06c; background: #eef5ff; }
+    #preview { border: 1px solid #ccc; border-radius: 6px; background: #fafafa; padding: 1rem; white-space: pre-wrap; word-break: break-all; max-height: 24rem; overflow: auto; font-family: ui-monospace, monospace; font-size: 0.8rem; }
+    #status { margin: 0.75rem 0; font-weight: 600; }
+    button { padding: 0.5rem 1rem; cursor: pointer; }
+    button:disabled { opacity: 0.4; cursor: default; }
+    .row { display: flex; gap: 1rem; align-items: center; margin: 0.75rem 0; }
+  </style>
+</head>
+<body>
+  <h1>clog-decrypter-wasm</h1>
+  <p>Repeating-key XOR decrypter for <code>.clog</code> files — WebAssembly port of
+     <code>clog_decomp.py</code>. Everything runs locally in your browser; nothing is uploaded.</p>
+
+  <div id="dropzone">
+    <div><strong>Drop a file here</strong> or click to choose</div>
+    <input type="file" id="fileinput" hidden>
+  </div>
+
+  <div class="row">
+    <span id="status">Waiting for file…</span>
+    <button id="download-btn" disabled>Download decrypted .txt</button>
+  </div>
+
+  <div class="row">
+    <label><input type="checkbox" id="hex-toggle"> Show hex preview instead of text</label>
+  </div>
+
+  <h2>Decrypted preview</h2>
+  <div id="preview">No file decrypted yet.</div>
+
+  <script src="main.js"></script>
+</body>
+</html>
